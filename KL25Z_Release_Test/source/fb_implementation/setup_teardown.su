@@ -1,0 +1,2 @@
+setup_teardown.c:9:6:initialize	8	static
+setup_teardown.c:39:6:terminate	0	static

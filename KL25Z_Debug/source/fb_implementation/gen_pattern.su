@@ -1,0 +1,2 @@
+gen_pattern.c:23:10:lfsr1	40	static
+gen_pattern.c:42:6:gen_pattern	32	static
