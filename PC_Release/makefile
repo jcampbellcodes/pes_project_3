@@ -35,6 +35,6 @@ bin/source/pc_implementation/main.o: ../source/main.c
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/pes_project3.axf output/pc_run output/pc_test */*.o */*/*.o */*.su */*/*.su */*.d */*/*.d
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/pes_project3.axf output/pc_run bin/* output/* */*.o */*/*.o */*.su */*/*.su */*.d */*/*.d
 	-@echo ' '
 	

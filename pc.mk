@@ -1,21 +1,21 @@
 # Top level makefile. Delves into the Release and Debug subdirs and runs make on the specific targets contained.
 
 # Builds all targets.
-all: pc_debug
+all: pc_run pc_debug
 
 # Builds the PC release build.
 pc_run:
-	cd PC_Release && $(MAKE) output/pc_run
+	cd PC_Release && $(MAKE) pc_run
 
 pc_debug:
-	cd PC_Debug && $(MAKE) output/pc_debug
+	cd PC_Debug && $(MAKE) pc_debug
 
 # Builds the PC release build.
-pc_test:
-	cd PC_Release_Test && $(MAKE) output/pc_test
+pc_run_test:
+	cd PC_Release_Test && $(MAKE) pc_run_test
 	
-pc_test_debug:
-	cd PC_Debug_Test && $(MAKE) output/pc_test
+pc_debug_test:
+	cd PC_Debug_Test && $(MAKE) pc_debug_test
 
 # Builds the FB release build.
 fb_run:
@@ -40,3 +40,5 @@ clean:
 	cd PC_Debug_Test && $(MAKE) clean
 	cd KL25Z_Release_Test && $(MAKE) clean
 	cd PC_Release_Test && $(MAKE) clean
+
+.PHONY: pc_debug pc_run pc_run_test pc_debug_test

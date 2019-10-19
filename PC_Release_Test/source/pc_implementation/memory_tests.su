@@ -1,9 +1,0 @@
-memory_tests.c:50:6:addressIsOwned	8	static
-memory_tests.c:80:12:allocate_words	24	static
-memory_tests.c:121:6:free_words	8	static
-memory_tests.c:148:11:display_memory	16	static
-memory_tests.c:171:12:write_memory	16	static
-memory_tests.c:185:12:invert_block	16	static
-memory_tests.c:213:12:write_pattern	16	static
-memory_tests.c:235:12:verify_pattern	32	static
-memory_tests.c:277:12:get_address	0	static

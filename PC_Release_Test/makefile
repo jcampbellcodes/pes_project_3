@@ -13,9 +13,9 @@ RM := rm -rf
 all: pc_run_test
 
 # dependencies create the output and build dirs and then compile/link all the code 
-pc_run_test: output/pc_test
+pc_run_test: output/pc_run_test
 
-output/pc_test: $(PC_OBJS) bin/tests/main.o bin/uCUnit/pc/System.o
+output/pc_run_test: $(PC_OBJS) bin/tests/main.o bin/uCUnit/pc/System.o
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $^ 
 

@@ -155,7 +155,7 @@ int main()
 	{
 	    UCUNIT_TestcaseBegin("invert block");
 	    uint32_t* ptr = allocate_words(ALLOC_SIZE);
-	    for(int i = 0; i < ALLOC_SIZE; i++)
+	    for(int i = 0; i < ALLOC_SIZE/sizeof(uint32_t); i++)
 	    {
 	    	ptr[i] = 0xABABABAB;
 	    }
@@ -181,14 +181,12 @@ int main()
 	    UCUNIT_TestcaseBegin("invert block fail");
 	    uint32_t* ptr = allocate_words(ALLOC_SIZE);
 
-	    for(int i = 0; i < ALLOC_SIZE; i++)
+	    for(int i = 0; i < ALLOC_SIZE/sizeof(uint32_t); i++)
 	    {
 			ptr[i] = 0xABABABAB;
 	    }
 
 		uint8_t* ptrBytes = (uint8_t*)ptr;
-
-
 
 	    uint32_t offset = 200;
 	    mem_status status = invert_block(ptr + offset, 4);

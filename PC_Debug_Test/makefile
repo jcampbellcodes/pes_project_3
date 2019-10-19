@@ -14,9 +14,9 @@ all: pc_debug_test
 
 # dependencies create the output and build dirs and then compile/link all the code 
 
-pc_debug_test: ./pes_project_3_with_sdk.axf
+pc_debug_test: output/pc_debug_test
 
-./pes_project_3_with_sdk.axf: $(PC_OBJS) bin/tests/main.o bin/uCUnit/pc/System.o
+output/pc_debug_test: $(PC_OBJS) bin/tests/main.o bin/uCUnit/pc/System.o
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $^
 
