@@ -151,8 +151,12 @@
  * UCUNIT_MODE_NORMAL: Only checks that fail are displayed
  * UCUNIT_MODE_VERBOSE: Passed and failed checks are displayed
  */
-//#define UCUNIT_MODE_NORMAL
+
+#ifdef DEBUG
 #define UCUNIT_MODE_VERBOSE
+#else
+#define UCUNIT_MODE_NORMAL
+#endif
 
 /**
  * Max. number of checkpoints. This may depend on your application

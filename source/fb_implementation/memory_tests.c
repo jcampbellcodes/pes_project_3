@@ -21,6 +21,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "logger.h"
 
@@ -173,9 +174,12 @@ mem_status write_memory(uint32_t * loc, uint8_t value)
 {
 	if(addressIsOwned(loc))
 	{
-		*((uint8_t*)loc) = value;
+		memcpy(loc, &value, sizeof(uint8_t));
 		return SUCCESS;
 	}
+	log_string("\nAddress [");
+	log_data((uint8_t*)loc, sizeof(uint32_t*));
+	log_string("] is not owned.");
 	return FAILED;
 }
 
@@ -233,7 +237,7 @@ mem_status write_pattern(uint32_t * loc, size_t length, uint8_t seed)
  * (compare bytes) where memory did not match the pattern.
  * (Note: the data type for your seed value may vary.)
  */
-uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
+uint32_t * verify_pattern(uint32_t * loc, size_t length, uint8_t seed)
 {
 	static uint8_t arr[ARRLEN] = {0};
 	for(int i = 0; i < ARRLEN; i++)
@@ -243,7 +247,7 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 	bool matched = true;
 	if(addressIsOwned(loc))
 	{
-		uint32_t* cmp_pattern = allocate_words(length/sizeof(uint32_t));
+		uint32_t* cmp_pattern = allocate_words(length);
 		gen_pattern((uint8_t*)cmp_pattern, length, seed);
 		uint8_t* first_pattern_bytes = (uint8_t*)loc;
 		uint8_t* cmp_pattern_bytes = (uint8_t*)cmp_pattern;

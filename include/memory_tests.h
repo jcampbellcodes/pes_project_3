@@ -71,7 +71,7 @@ mem_status invert_block(uint32_t * loc, size_t length);
  * starting at the specified address. (Note: the data type
  * for your seed value may vary.)
  */
-mem_status write_pattern(uint32_t * loc, size_t length, int8_t seed);
+mem_status write_pattern(uint32_t * loc, size_t length, uint8_t seed);
 
 /**
  * The user specifies an address, a number of bytes, and
@@ -84,7 +84,7 @@ mem_status write_pattern(uint32_t * loc, size_t length, int8_t seed);
  * (compare bytes) where memory did not match the pattern.
  * (Note: the data type for your seed value may vary.)
  */
-uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed);
+uint32_t * verify_pattern(uint32_t * loc, size_t length, uint8_t seed);
 
 /**
  * this function will take an offset from a specified

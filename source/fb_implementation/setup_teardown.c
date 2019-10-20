@@ -10,37 +10,28 @@
 #include "pin_mux.h"
 
 
-#define BOARD_LED_GPIO BOARD_LED_RED_GPIO
-#define BOARD_LED_GPIO_PIN BOARD_LED_RED_GPIO_PIN
-
 void initialize()
 {
 #ifdef DEBUG
 	/* serial debug console setup: use PRINTF("debug msg"); */
 	BOARD_InitDebugConsole();
-
 	log_enable();
-
-	PRINTF("program start");
+	PRINTF("\nprogram start\n");
 #endif
 
     /* Board pin, clock, debug console init */
-    BOARD_InitPins();
-    BOARD_BootClockRUN();
-
-    /* Init output LED GPIO. */
-    //GPIO_PinInit(BOARD_LED_GPIO, BOARD_LED_GPIO_PIN, &led_config);
-
-
-//	/* board setup */
 	BOARD_InitBootPins();
 	BOARD_InitBootClocks();
 	BOARD_InitBootPeripherals();
 
-//	/* led setup */
+	/* led setup */
 	LED_RED_INIT(1);
 	LED_BLUE_INIT(1);
 	LED_GREEN_INIT(1);
+
+	LED_BLUE_OFF();
+	LED_GREEN_OFF();
+	LED_RED_OFF();
 }
 
 /**
@@ -53,6 +44,6 @@ void initialize()
 void terminate()
 {
 #ifdef DEBUG
-	PRINTF("program end");
+	PRINTF("\nprogram end\n");
 #endif
 }
