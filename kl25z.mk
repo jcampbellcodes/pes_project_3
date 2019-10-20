@@ -1,7 +1,7 @@
 # Top level makefile. Delves into the Release and Debug subdirs and runs make on the specific targets contained.
 
 # Builds all targets.
-all: pc_run pc_debug pc_run_test pc_debug_test
+all: fb_run fb_debug fb_run_test fb_debug_test
 
 # Builds the PC release build.
 pc_run:

@@ -22,6 +22,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#include "logger.h"
+
+
 #define ARRLEN 256
 
 /**
@@ -98,6 +101,8 @@ uint32_t * allocate_words(size_t length)
 	}
 	else
 	{
+		log_string("allocate_words: Trying to allocate invalid memory ");
+		log_integer(length);
 		return NULL;
 	}
 
@@ -113,7 +118,7 @@ uint32_t * allocate_words(size_t length)
  * issued, but execution can continue.
  *
  */
-void free_words(uint32_t * src)
+mem_status free_words(uint32_t * src)
 {
 	if(src)
 	{
@@ -127,11 +132,12 @@ void free_words(uint32_t * src)
 				struct mem_list_node* node_to_delete = iter->next;
 				iter->next = iter->next->next;
 				free(node_to_delete);
-				return;
+				return SUCCESS;
 			}
 			iter = iter->next;
 		}
 	}
+	return FAILED;
 }
 
 /**
@@ -150,6 +156,8 @@ uint8_t * display_memory(uint32_t * loc, size_t length)
 	{
 		for(int i = 0; i < length; i++)
 			arr[i] = *((uint8_t*)(loc) + i);
+
+		log_data((uint8_t*)loc, length);
 
 		return &arr[0];
 	}
@@ -180,6 +188,8 @@ mem_status invert_block(uint32_t * loc, size_t length)
 	if(addressIsOwned(loc))
 	{
 		uint8_t* locBytes = (uint8_t*)loc;
+		log_data(locBytes, length);
+
 		for(int i = 0; i < length; i++)
 		{
 			uint8_t inverted_byte = locBytes[i];
@@ -206,6 +216,7 @@ mem_status write_pattern(uint32_t * loc, size_t length, uint8_t seed)
 	if(addressIsOwned(loc) && length>0)
 	{
 		gen_pattern((uint8_t*)loc, length, seed);
+		log_data((uint8_t*)loc, length);
 		return SUCCESS;
 	}
 	return FAILED;
@@ -236,6 +247,13 @@ uint32_t * verify_pattern(uint32_t * loc, size_t length, int8_t seed)
 		gen_pattern((uint8_t*)cmp_pattern, length, seed);
 		uint8_t* first_pattern_bytes = (uint8_t*)loc;
 		uint8_t* cmp_pattern_bytes = (uint8_t*)cmp_pattern;
+
+		log_string("Input data:\n");
+		log_data((uint8_t*)loc, length);
+
+		log_string("Compared data:\n");
+		log_data(cmp_pattern_bytes, length);
+
 		for(int i = 0; i < length; i++)
 		{
 			if(first_pattern_bytes[i] != cmp_pattern_bytes[i])

@@ -32,10 +32,10 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: pes_project_3_with_sdk.axf
+all: output/kl25z_run_test.axf
 
 # Tool invocations
-pes_project_3_with_sdk.axf: $(OBJS) $(USER_OBJS)
+output/kl25z_run_test.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
 	arm-none-eabi-gcc -nostdlib -Xlinker -Map="pes_project_3_with_sdk.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T pes_project_3_with_sdk_Release.ld -o "pes_project_3_with_sdk.axf" $(OBJS) $(USER_OBJS) $(LIBS)

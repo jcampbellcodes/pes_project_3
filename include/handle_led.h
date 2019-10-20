@@ -19,7 +19,6 @@
 
 #include <stdint.h>
 #include "led_types.h"
-#include "logger.h"
 
 /**
  * set_led

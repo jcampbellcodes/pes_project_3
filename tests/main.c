@@ -49,19 +49,19 @@ int main()
 	{
 	    UCUNIT_TestcaseBegin("free words");
 	    uint32_t* ptr = allocate_words(ALLOC_SIZE);
-		free_words(ptr);
+		UCUNIT_CheckIsEqual(free_words(ptr), SUCCESS);
 	    UCUNIT_TestcaseEnd();
 	}
 
 	{
 	    UCUNIT_TestcaseBegin("free words null");
-		free_words(NULL);
+		UCUNIT_CheckIsEqual(free_words(NULL), FAILED);
 	    UCUNIT_TestcaseEnd();
 	}
 
 	{
 	    UCUNIT_TestcaseBegin("free words garbage");
-		free_words((uint32_t*)0xDEADBEEF);
+		UCUNIT_CheckIsEqual(free_words((uint32_t*)0xDEADBEEF), FAILED);
 	    UCUNIT_TestcaseEnd();
 	}
 
@@ -137,6 +137,8 @@ int main()
 	    	ptr[i] = 0xABABABAB;
 	    }
 
+	    uint8_t* ptrBytes = (uint8_t*)ptr;
+
 	    uint32_t offset = 200;
 	    uint16_t valToWrite = 0xFFEE;
 	    mem_status status = write_memory(ptr + offset, valToWrite);
@@ -144,7 +146,7 @@ int main()
 
 	    for(int i = 0; i < ALLOC_SIZE; i++)
 	    {
-	    	UCUNIT_CheckIsEqual(ptr[i], 0xABABABAB);
+	    	UCUNIT_CheckIsEqual(ptrBytes[i], 0xAB);
 	    }
 
 	    // clean up

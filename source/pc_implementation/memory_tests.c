@@ -118,7 +118,7 @@ uint32_t * allocate_words(size_t length)
  * issued, but execution can continue.
  *
  */
-void free_words(uint32_t * src)
+mem_status free_words(uint32_t * src)
 {
 	if(src)
 	{
@@ -132,11 +132,12 @@ void free_words(uint32_t * src)
 				struct mem_list_node* node_to_delete = iter->next;
 				iter->next = iter->next->next;
 				free(node_to_delete);
-				return;
+				return SUCCESS;
 			}
 			iter = iter->next;
 		}
 	}
+	return FAILED;
 }
 
 /**

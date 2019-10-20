@@ -29,7 +29,7 @@
 void set_led(uint8_t inValue, enum COLOR inColor)
 {
 #ifdef DEBUG
-	GPIO_TogglePinsOutput(GPIOD, 1U << 7U);
+	//GPIO_TogglePinsOutput(GPIOD, 1U << 7U);
 	PRINTF("\nLED %s %s", COLOR_STRINGS[inColor], inValue ? "ON" : "OFF");
 #endif
 

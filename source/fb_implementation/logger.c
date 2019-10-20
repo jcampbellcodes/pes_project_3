@@ -1,9 +1,24 @@
+/*
+ * @file logger.h
+ * @brief Project 3
+ *
+ * @author Jack Campbell
+ * @tools  PC Compiler: GNU gcc 8.3.0
+ *         PC Linker: GNU ld 2.32
+ *         PC Debugger: GNU gdb 8.2.91.20190405-git
+ *         ARM Compiler: GNU gcc version 8.2.1 20181213
+ *         ARM Linker: GNU ld 2.31.51.20181213
+ *         ARM Debugger: GNU gdb 8.2.50.20181213-git
+ */
+
+#ifndef PES_PROJECT_3_LOGGER_H
+#define PES_PROJECT_3_LOGGER_H
+#include "logger.h"
+
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include "logger.h"
 #include "fsl_debug_console.h"
-#include "memory_tests.h"
 
 static bool logging = false;
 
@@ -21,7 +36,16 @@ bool log_enabled() {
 
 void log_data(const uint8_t* inBytes, size_t inSize) {
 	if (logging) {
-		PRINTF("0x%x: %.*s\n",inSize, inBytes);
+		PRINTF("\nBytes at address %p:\n==========================\n", inBytes);
+		for(int i = 0; i < inSize; i++)
+		{
+			PRINTF("%2x ", inBytes[i]);
+			if((i+1)%4 == 0)
+			{
+				PRINTF("\n");
+			}
+		}
+		printf("\n==========================\n");
 	}
 }
 
@@ -33,6 +57,8 @@ void log_string(const char* inString) {
 
 void log_integer(uint64_t inNum) {
 	if (logging) {
-			PRINTF("%ld\n", inNum);
+		PRINTF("%llu\n", inNum);
 	}
 }
+
+#endif
