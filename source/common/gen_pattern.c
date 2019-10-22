@@ -10,7 +10,8 @@
  *         ARM Linker: GNU ld 2.31.51.20181213
  *         ARM Debugger: GNU gdb 8.2.50.20181213-git
  *
- *
+ * LEVERAGED CODE
+ * SRAND and RAND code are taken from http://codeforces.com/blog/entry/61587
  */
 
 #ifndef GENPATTERNH
@@ -19,14 +20,24 @@
 #include <stdint.h>
 #include <stddef.h>
 
-// http://codeforces.com/blog/entry/61587
-static long holdrand = 1L;
+/**
+ * The stateful seed of the number generator that 
+ * is progressed in a predictable way.
+ */
+static uint32_t holdrand = 1L;
 
-void SRAND(unsigned int seed) {
-    holdrand = (long) seed;
+/**
+ * Seeds the progression of pseudo-random numbers. 
+ */
+void SRAND(uint8_t seed) {
+    holdrand = (uint32_t) seed;
 }
 
-long RAND() {
+/**
+ * Linear congruential generator that marches the seed through
+ * its permutations to create pseudo-random numbers.
+ */
+uint32_t RAND() {
     return (((holdrand = holdrand * 214013L + 2531011L) >> 16) & 0x7fff);
 }
 

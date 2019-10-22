@@ -41,6 +41,6 @@ bin/uCUnit/pc/System.o: ../uCUnit/pc/System.c
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/pes_project3.axf output/pc_run output/pc_test */*.o */*/*.o */*.su */*/*.su */*.d */*/*.d
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/* bin/* */*.o */*/*.o */*.su */*/*.su */*.d */*/*.d
 	-@echo ' '
 

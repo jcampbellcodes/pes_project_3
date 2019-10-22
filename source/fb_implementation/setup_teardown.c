@@ -12,16 +12,12 @@
  *         ARM Debugger: GNU gdb 8.2.50.20181213-git
  */
 
-#include <stdio.h>
 #include "board.h"
 #include "peripherals.h"
 #include "clock_config.h"
-#include "MKL25Z4.h"
-#include "fsl_debug_console.h"
-#include "logger.h"
-#include "fsl_gpio.h"
 #include "pin_mux.h"
 
+#include "logger.h"
 
 void initialize()
 {
@@ -29,7 +25,7 @@ void initialize()
 	/* serial debug console setup: use PRINTF("debug msg"); */
 	BOARD_InitDebugConsole();
 	log_enable();
-	PRINTF("\nprogram start\n");
+	log_string("\nprogram start\n");
 #endif
 
     /* Board pin, clock, debug console init */
@@ -57,6 +53,6 @@ void initialize()
 void terminate()
 {
 #ifdef DEBUG
-	PRINTF("\nprogram end\n");
+	log_string("\nprogram end\n");
 #endif
 }

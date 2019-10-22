@@ -1,0 +1,265 @@
+
+======================================
+allocate words
+======================================
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:18: passed:IsEqual(((uint8_t*)ptr)[i],0x0)
+../tests/main.c:21: passed:IsNotNull(ptr)
+======================================
+Testcase passed.
+======================================
+
+======================================
+allocate words fail
+======================================
+allocate_words: Trying to allocate invalid memory 
+0
+../tests/main.c:31: passed:IsNull(ptr)
+======================================
+Testcase passed.
+======================================
+
+======================================
+get address
+======================================
+../tests/main.c:42: passed:IsEqual(addr,(uint32_t*)((uint8_t*)(ptr) + 8))
+======================================
+Testcase passed.
+======================================
+
+======================================
+free words
+======================================
+../tests/main.c:52: passed:IsEqual(free_words(ptr),SUCCESS)
+======================================
+Testcase passed.
+======================================
+
+======================================
+free words null
+======================================
+../tests/main.c:58: passed:IsEqual(free_words(NULL),FAILED)
+======================================
+Testcase passed.
+======================================
+
+======================================
+free words garbage
+======================================
+../tests/main.c:64: passed:IsEqual(free_words((uint32_t*)0xDEADBEEF),FAILED)
+======================================
+Testcase passed.
+======================================
+
+======================================
+write pattern
+======================================
+
+Bytes at address 0x7f98b5d00020:
+==========================
+2d 20 86 83 
+2c c2 fe 3f 
+d1 8c b5 1d 
+6c 5e 99 a5 
+
+==========================
+../tests/main.c:73: passed:IsEqual(status,SUCCESS)
+======================================
+Testcase passed.
+======================================
+
+======================================
+display memory
+======================================
+
+Bytes at address 0x7f98b5d00020:
+==========================
+ 0  0  0  0 
+ 0  0  0  0 
+ 0  0  0  0 
+ 0  0  0  0 
+
+==========================
+../tests/main.c:84: passed:IsNotNull(disp)
+======================================
+Testcase passed.
+======================================
+
+======================================
+verify pattern
+======================================
+
+Bytes at address 0x7f98b5c02700:
+==========================
+2d 20 86 83 
+2c c2 fe 3f 
+d1 8c b5 1d 
+6c 5e 99 a5 
+
+==========================
+../tests/main.c:96: passed:IsEqual(status,SUCCESS)
+Input data:
+
+
+Bytes at address 0x7f98b5c02700:
+==========================
+2d 20 86 83 
+2c c2 fe 3f 
+d1 8c b5 1d 
+6c 5e 99 a5 
+
+==========================
+Compared data:
+
+
+Bytes at address 0x7f98b5c02730:
+==========================
+2d 20 86 83 
+2c c2 fe 3f 
+d1 8c b5 1d 
+6c 5e 99 a5 
+
+==========================
+../tests/main.c:99: passed:IsNull(nonMatchingValues)
+======================================
+Testcase passed.
+======================================
+
+======================================
+write memory
+======================================
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:122: passed:IsEqual(ptrBytes[i],i == 8 ? 0xEE : 0xAB)
+../tests/main.c:125: passed:IsEqual(status,SUCCESS)
+======================================
+Testcase passed.
+======================================
+
+======================================
+write memory fail
+======================================
+
+Address [
+
+Bytes at address 0x7f98b5c027c8:
+==========================
+ 0  0  0  0 
+ 0  0  0  0 
+
+==========================
+] is not owned.
+../tests/main.c:145: passed:IsEqual(status,FAILED)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:149: passed:IsEqual(ptrBytes[i],0xAB)
+======================================
+Testcase passed.
+======================================
+
+======================================
+invert block
+======================================
+
+ Data Before invert: 
+
+
+Bytes at address 0x7f98b5c02704:
+==========================
+ab ab ab ab 
+
+==========================
+
+ Data After invert: 
+
+
+Bytes at address 0x7f98b5c02704:
+==========================
+54 54 54 54 
+
+==========================
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:172: passed:IsEqual(ptrBytes[i],(i >= 4 && i < 8 ) ? 0xAB^0xFF : 0xAB)
+../tests/main.c:175: passed:IsEqual(status,SUCCESS)
+======================================
+Testcase passed.
+======================================
+
+======================================
+invert block fail
+======================================
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:198: passed:IsEqual(ptrBytes[i],0xAB)
+../tests/main.c:201: passed:IsEqual(status,FAILED)
+======================================
+Testcase passed.
+======================================
+
