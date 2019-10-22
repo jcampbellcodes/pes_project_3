@@ -39,7 +39,7 @@ int main()
 		UCUNIT_TestcaseBegin("get address");
 		uint32_t* ptr = allocate_words(ALLOC_SIZE);
 		uint32_t * addr = get_address(ptr, 8);
-		UCUNIT_CheckIsEqual(addr, (ptr + 8));
+		UCUNIT_CheckIsEqual(addr, (uint32_t*)((uint8_t*)(ptr) + 8));
 		UCUNIT_TestcaseEnd();
 
 		// clean up
@@ -68,8 +68,8 @@ int main()
 	{
 	    UCUNIT_TestcaseBegin("write pattern");
 	    uint32_t* ptr = allocate_words(ALLOC_SIZE);
-		const int8_t seed = 2;
-		mem_status status = write_pattern(ptr, 16, seed);
+		const uint8_t seed = 2;
+		mem_status status = write_pattern(ptr, ALLOC_SIZE, seed);
 		UCUNIT_CheckIsEqual(status, SUCCESS);
 
 		// clean up
@@ -80,7 +80,7 @@ int main()
 	{
 	    UCUNIT_TestcaseBegin("display memory");
 	    uint32_t* ptr = allocate_words(ALLOC_SIZE);
-		uint8_t * disp = display_memory(ptr, 16);
+		uint8_t * disp = display_memory(ptr, ALLOC_SIZE);
 		UCUNIT_CheckIsNotNull(disp);
 		// clean up
 	    free_words(ptr);
@@ -92,10 +92,10 @@ int main()
 	    uint32_t* ptr = allocate_words(ALLOC_SIZE);
 	    const int8_t seed = 2;
 
-	    mem_status status = write_pattern(ptr, 16, seed);
+	    mem_status status = write_pattern(ptr, ALLOC_SIZE, seed);
 	    UCUNIT_CheckIsEqual(status, SUCCESS);
 
-	    uint32_t * nonMatchingValues = verify_pattern(ptr, 16, seed);
+	    uint32_t * nonMatchingValues = verify_pattern(ptr, ALLOC_SIZE, seed);
 	    UCUNIT_CheckIsNull(nonMatchingValues);
 
 	    // clean up
@@ -141,7 +141,7 @@ int main()
 
 	    uint32_t offset = 200;
 	    uint16_t valToWrite = 0xFFEE;
-	    mem_status status = write_memory(ptr + offset, valToWrite);
+	    mem_status status = write_memory(get_address(ptr, offset), valToWrite);
 	    UCUNIT_CheckIsEqual(status, FAILED);
 
 	    for(int i = 0; i < ALLOC_SIZE; i++)

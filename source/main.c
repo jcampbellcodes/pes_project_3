@@ -2,6 +2,8 @@
  * @file main.c
  * @brief Project 3
  *
+ * A set of functions for displaying and manipulating memory.
+ * 
  * @tools  PC Compiler: GNU gcc 8.3.0
  *         PC Linker: GNU ld 2.32
  *         PC Debugger: GNU gdb 8.2.91.20190405-git
@@ -15,6 +17,9 @@
 #include "logger.h"
 #include "setup_teardown.h"
 
+/**
+ * @brief The size of the allocation in this program.
+ */
 #define ALLOC_BYTES 16
 
 int main()
@@ -40,17 +45,18 @@ int main()
 		goto error;
 
 	log_string("\nWrite 0xFFEE to a position within that region (location + some offset you select)\n");
-	uint32_t offset = 1;
-	uint32_t* write_location = (uint32_t*)(((uint8_t*)ptr)+offset);
+	const uint32_t offset = 4;
+	uint32_t* write_location = get_address(ptr, offset);
 	if(write_memory(write_location, 0xFF) == FAILED)
 		goto error;
 
-	write_location = (uint32_t*)(((uint8_t*)ptr)+offset+1);
+	write_location = get_address(ptr, offset+1);
 	if(write_memory(write_location, 0xEE) == FAILED)
 		goto error;
 
 	log_string("\nDisplay that region’s memory pattern\n");
-	uint32_t* read_location = (uint32_t*)(((uint8_t*)ptr)+offset);
+
+	uint32_t* read_location = get_address(ptr, offset);
 	uint8_t* ptr_bytes = display_memory(read_location, sizeof(uint16_t));
 	if (!ptr_bytes || ptr_bytes[0] != 0xFF || ptr_bytes[1] != 0xEE)
 		goto error;
@@ -72,7 +78,7 @@ int main()
 		goto error;
 
 	log_string("\nInvert 4 bytes in the region (location + some offset)\n");
-	if(invert_block(ptr + offset, 4) == FAILED)
+	if(invert_block(get_address(ptr, offset), 4) == FAILED)
 		goto error;
 
 	log_string("\nDisplay that region’s memory pattern\n");
@@ -84,7 +90,7 @@ int main()
 		goto error;
 
 	log_string("\nInvert those 4 bytes again in the LMA region (location + some offset)\n");
-	if(invert_block(ptr + offset, 4) == FAILED)
+	if(invert_block(get_address(ptr, offset), 4) == FAILED)
 		goto error;
 
 	log_string("\nDisplay that region’s memory pattern\n");

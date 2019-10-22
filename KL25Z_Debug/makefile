@@ -44,7 +44,7 @@ output/kl25z_debug.axf: $(OBJS) $(USER_OBJS)
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) pes_project_3_with_sdk.axf
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/kl25z_debug.axf output/* bin/* */*.o */*/*.o */*.su */*/*.su */*.d */*/*.d
 	-@echo ' '
 
 post-build:

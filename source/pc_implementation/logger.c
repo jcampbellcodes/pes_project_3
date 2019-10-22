@@ -20,20 +20,38 @@
 #include <stdint.h>
 #include <stdio.h>
 
+/**
+ * @brief Static variable that determines the state of the logger.
+ */
 static bool logging = false;
 
+/**
+ * @brief Log_enable – begin printing log messages when called
+ */
 void log_enable() {
 	logging = true;
 }
 
+/**
+ * @brief Log_disable – ignore any log messages until re-enabled
+ */
 void log_disable() {
 	logging = false;
 }
 
+/**
+ * @brief Log_status – returns a flag to indicate whether the logger is enabled or disabled
+ * @return Whether the log is currently enabled.
+ */
 bool log_enabled() {
 	return logging;
 }
 
+/**
+ * @brief Log_data – display in hexadecimal an address and contents of a memory location,
+ * @param inBytes a pointer to a sequence of bytes to log
+ * @param inSize Number of bytes to log
+ */
 void log_data(const uint8_t* inBytes, size_t inSize) {
 	if (logging) {
 		printf("\nBytes at address %p:\n==========================\n", inBytes);
@@ -49,12 +67,20 @@ void log_data(const uint8_t* inBytes, size_t inSize) {
 	}
 }
 
+/**
+ * @brief Display a string.
+ * @param inString String to display.
+ */
 void log_string(const char* inString) {
 	if (logging) {
 		printf("%s\n", inString);
 	}
 }
 
+/**
+ * @brief Display an integer
+ * @param inNum Integer to display.
+ */
 void log_integer(uint64_t inNum) {
 	if (logging) {
 		printf("%llu\n", inNum);

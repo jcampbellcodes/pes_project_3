@@ -2,6 +2,8 @@
  * @file gen_pattern.h
  * @brief Project 3
  *
+ * Functions for generating a random pattern.
+ *
  * @author Jack Campbell
  * @tools  PC Compiler: GNU gcc 8.3.0
  *         PC Linker: GNU ld 2.32
@@ -17,8 +19,13 @@
 #include <stdint.h>
 #include <stddef.h>
 
-//pattern generation function will accept a number of bytes and a seed value and return a byte array.
-void gen_pattern(uint8_t * pattern, size_t length, uint8_t seed);
+/**
+ * @brief Pattern generation function will accept a number of bytes and a seed value and return a byte array.
+ * @param outPattern The region of memory to write the pattern to.
+ * @param inLength The number of bytes to make the pattern.
+ * @param inSeed The seed to use in pattern generation.
+ */
+void gen_pattern(uint8_t * outPattern, size_t inLength, uint8_t inSeed);
 
 
 #endif

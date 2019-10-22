@@ -46,7 +46,7 @@ output/kl25z_run_test.axf: $(OBJS) $(USER_OBJS)
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/kl25z_run_test.axf
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) output/kl25z_run_test.axf output/* */*.o */*/*.o */*.su */*/*.su */*.d */*/*.d
 	-@echo ' '
 
 post-build:

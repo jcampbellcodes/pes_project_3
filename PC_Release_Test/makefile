@@ -15,10 +15,10 @@ all: pc_run_test
 # dependencies create the output and build dirs and then compile/link all the code 
 pc_run_test: output/pc_run_test
 
+# Create the main executable
 output/pc_run_test: $(PC_OBJS) bin/tests/main.o bin/uCUnit/pc/System.o
 	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -o $@ $^ 
-
+	$(CC) $(CFLAGS) -o $@ $^
 
 # making object targets for all the source files
 bin/source/pc_implementation/%.o: $(PC_SRC_REL_ROOT)/%.c
@@ -29,7 +29,7 @@ bin/source/common/%.o: $(COMMON_REL_ROOT)/%.c
 	mkdir -p $(dir $@)
 	gcc -c -o $@ $< $(CFLAGS)
 	
-# special case main, which is not in the platform specific dir
+# Also compile in the uCUnit test files
 bin/tests/main.o: ../tests/main.c
 	echo "COMPILING TEST MAIN"
 	mkdir -p $(dir $@)

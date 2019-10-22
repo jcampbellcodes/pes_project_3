@@ -3,11 +3,11 @@ Archive member included to satisfy reference by file (symbol)
 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_semihost_nf.a(_cr__main.o)
                               ./startup/startup_mkl25z4.o (__main)
 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(memcpy.o)
-                              ./source/fb_implementation/memory_tests.o (memcpy)
+                              ./source/common/memory_tests.o (memcpy)
 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(memset.o)
                               ./drivers/fsl_flash.o (memset)
 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(alloc.o)
-                              ./source/fb_implementation/memory_tests.o (malloc)
+                              ./source/common/memory_tests.o (malloc)
 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(initio.o)
                               /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_semihost_nf.a(_cr__main.o) (_initio)
 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
@@ -113,11 +113,6 @@ Discarded input sections
                 0x0000000000000000        0xc ./source/fb_implementation/logger.o
  .text.log_enabled
                 0x0000000000000000        0xc ./source/fb_implementation/logger.o
- .text          0x0000000000000000        0x0 ./source/fb_implementation/memory_tests.o
- .data          0x0000000000000000        0x0 ./source/fb_implementation/memory_tests.o
- .bss           0x0000000000000000        0x0 ./source/fb_implementation/memory_tests.o
- .text.get_address
-                0x0000000000000000        0xa ./source/fb_implementation/memory_tests.o
  .text          0x0000000000000000        0x0 ./source/fb_implementation/setup_teardown.o
  .data          0x0000000000000000        0x0 ./source/fb_implementation/setup_teardown.o
  .bss           0x0000000000000000        0x0 ./source/fb_implementation/setup_teardown.o
@@ -125,20 +120,17 @@ Discarded input sections
  .data          0x0000000000000000        0x0 ./source/common/gen_pattern.o
  .bss           0x0000000000000000        0x0 ./source/common/gen_pattern.o
  .text.SRAND    0x0000000000000000        0xc ./source/common/gen_pattern.o
+ .text          0x0000000000000000        0x0 ./source/common/memory_tests.o
+ .data          0x0000000000000000        0x0 ./source/common/memory_tests.o
+ .bss           0x0000000000000000        0x0 ./source/common/memory_tests.o
+ .text.get_address
+                0x0000000000000000        0x8 ./source/common/memory_tests.o
  .text          0x0000000000000000        0x0 ./source/main.o
  .data          0x0000000000000000        0x0 ./source/main.o
  .bss           0x0000000000000000        0x0 ./source/main.o
  .text          0x0000000000000000        0x0 ./source/mtb.o
  .data          0x0000000000000000        0x0 ./source/mtb.o
  .bss           0x0000000000000000        0x0 ./source/mtb.o
- .text          0x0000000000000000        0x0 ./source/pes_project_3_with_sdk.o
- .data          0x0000000000000000        0x0 ./source/pes_project_3_with_sdk.o
- .bss           0x0000000000000000        0x0 ./source/pes_project_3_with_sdk.o
- .debug_line    0x0000000000000000        0x0 ./source/pes_project_3_with_sdk.o
- .debug_str     0x0000000000000000      0x165 ./source/pes_project_3_with_sdk.o
- .comment       0x0000000000000000       0x76 ./source/pes_project_3_with_sdk.o
- .ARM.attributes
-                0x0000000000000000       0x32 ./source/pes_project_3_with_sdk.o
  .text          0x0000000000000000        0x0 ./source/semihost_hardfault.o
  .data          0x0000000000000000        0x0 ./source/semihost_hardfault.o
  .bss           0x0000000000000000        0x0 ./source/semihost_hardfault.o
@@ -731,12 +723,11 @@ LOAD ./utilities/fsl_debug_console.o
 LOAD ./startup/startup_mkl25z4.o
 LOAD ./source/fb_implementation/handle_led.o
 LOAD ./source/fb_implementation/logger.o
-LOAD ./source/fb_implementation/memory_tests.o
 LOAD ./source/fb_implementation/setup_teardown.o
 LOAD ./source/common/gen_pattern.o
+LOAD ./source/common/memory_tests.o
 LOAD ./source/main.o
 LOAD ./source/mtb.o
-LOAD ./source/pes_project_3_with_sdk.o
 LOAD ./source/semihost_hardfault.o
 LOAD ./drivers/fsl_clock.o
 LOAD ./drivers/fsl_common.o
@@ -882,32 +873,32 @@ END GROUP
  .text.log_integer
                 0x00000000000004e0       0x20 ./source/fb_implementation/logger.o
                 0x00000000000004e0                log_integer
- .text.addressIsOwned
-                0x0000000000000500       0x30 ./source/fb_implementation/memory_tests.o
-                0x0000000000000500                addressIsOwned
- .text.allocate_words
-                0x0000000000000530       0x58 ./source/fb_implementation/memory_tests.o
-                0x0000000000000530                allocate_words
- .text.free_words
-                0x0000000000000588       0x30 ./source/fb_implementation/memory_tests.o
-                0x0000000000000588                free_words
- .text.display_memory
-                0x00000000000005b8       0x38 ./source/fb_implementation/memory_tests.o
-                0x00000000000005b8                display_memory
- .text.write_memory
-                0x00000000000005f0       0x40 ./source/fb_implementation/memory_tests.o
-                0x00000000000005f0                write_memory
- .text.verify_pattern
-                0x0000000000000630       0x90 ./source/fb_implementation/memory_tests.o
-                0x0000000000000630                verify_pattern
  .text.initialize
-                0x00000000000006c0       0x44 ./source/fb_implementation/setup_teardown.o
-                0x00000000000006c0                initialize
- .text.RAND     0x0000000000000704       0x20 ./source/common/gen_pattern.o
-                0x0000000000000704                RAND
+                0x0000000000000500       0x44 ./source/fb_implementation/setup_teardown.o
+                0x0000000000000500                initialize
+ .text.RAND     0x0000000000000544       0x20 ./source/common/gen_pattern.o
+                0x0000000000000544                RAND
  .text.gen_pattern
-                0x0000000000000724       0x24 ./source/common/gen_pattern.o
-                0x0000000000000724                gen_pattern
+                0x0000000000000564       0x24 ./source/common/gen_pattern.o
+                0x0000000000000564                gen_pattern
+ .text.addressIsOwned
+                0x0000000000000588       0x30 ./source/common/memory_tests.o
+                0x0000000000000588                addressIsOwned
+ .text.allocate_words
+                0x00000000000005b8       0x58 ./source/common/memory_tests.o
+                0x00000000000005b8                allocate_words
+ .text.free_words
+                0x0000000000000610       0x30 ./source/common/memory_tests.o
+                0x0000000000000610                free_words
+ .text.display_memory
+                0x0000000000000640       0x38 ./source/common/memory_tests.o
+                0x0000000000000640                display_memory
+ .text.write_memory
+                0x0000000000000678       0x40 ./source/common/memory_tests.o
+                0x0000000000000678                write_memory
+ .text.verify_pattern
+                0x00000000000006b8       0x90 ./source/common/memory_tests.o
+                0x00000000000006b8                verify_pattern
  .text.startup.main
                 0x0000000000000748      0x1c8 ./source/main.o
                 0x0000000000000748                main
@@ -1002,15 +993,15 @@ END GROUP
                 0x0000000000002160        0xc /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_semihost_nf.a(__sys_appexit.o)
                 0x0000000000002160                __exit
                 0x0000000000002160                __sys_appexit
- .text.invert_block
-                0x000000000000216c       0x2e ./source/fb_implementation/memory_tests.o
-                0x000000000000216c                invert_block
- .text.write_pattern
-                0x000000000000219a       0x2e ./source/fb_implementation/memory_tests.o
-                0x000000000000219a                write_pattern
  .text.terminate
-                0x00000000000021c8        0x2 ./source/fb_implementation/setup_teardown.o
-                0x00000000000021c8                terminate
+                0x000000000000216c        0x2 ./source/fb_implementation/setup_teardown.o
+                0x000000000000216c                terminate
+ .text.invert_block
+                0x000000000000216e       0x2e ./source/common/memory_tests.o
+                0x000000000000216e                invert_block
+ .text.write_pattern
+                0x000000000000219c       0x2e ./source/common/memory_tests.o
+                0x000000000000219c                write_pattern
  .text.GPIO_PinInit
                 0x00000000000021ca       0x26 ./drivers/fsl_gpio.o
                 0x00000000000021ca                GPIO_PinInit
@@ -1086,11 +1077,11 @@ END GROUP
  .rodata.log_string.str1.1
                 0x0000000000002389        0x4 ./source/fb_implementation/logger.o
  .rodata.allocate_words.str1.1
-                0x000000000000238d       0x33 ./source/fb_implementation/memory_tests.o
+                0x000000000000238d       0x33 ./source/common/memory_tests.o
  .rodata.verify_pattern.str1.1
-                0x00000000000023c0       0x1d ./source/fb_implementation/memory_tests.o
+                0x00000000000023c0       0x1d ./source/common/memory_tests.o
  .rodata.write_memory.str1.1
-                0x00000000000023dd       0x1b ./source/fb_implementation/memory_tests.o
+                0x00000000000023dd       0x1b ./source/common/memory_tests.o
  .rodata.main.str1.1
                 0x00000000000023f8      0x2ce ./source/main.o
  .rodata.mcgConfig_BOARD_BootClockRUN
@@ -1175,7 +1166,7 @@ END GROUP
                 0x000000001ffff088                _bss = .
  *(SORT_BY_ALIGNMENT(.bss*))
  .bss.memListHead
-                0x000000001ffff088        0xc ./source/fb_implementation/memory_tests.o
+                0x000000001ffff088        0xc ./source/common/memory_tests.o
  .bss.g_xtal0Freq
                 0x000000001ffff094        0x4 ./drivers/fsl_clock.o
                 0x000000001ffff094                g_xtal0Freq
@@ -1197,8 +1188,8 @@ END GROUP
  .bss.__Ciob    0x000000001ffff0bc       0xb4 /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_semihost_nf.a(__ciob.o)
                 0x000000001ffff0bc                __Ciob
  .bss.logging   0x000000001ffff170        0x1 ./source/fb_implementation/logger.o
- .bss.arr.4085  0x000000001ffff171      0x100 ./source/fb_implementation/memory_tests.o
- .bss.arr.4118  0x000000001ffff271      0x100 ./source/fb_implementation/memory_tests.o
+ .bss.arr.4085  0x000000001ffff171      0x100 ./source/common/memory_tests.o
+ .bss.arr.4118  0x000000001ffff271      0x100 ./source/common/memory_tests.o
  *(SORT_BY_ALIGNMENT(COMMON))
                 0x000000001ffff374                . = ALIGN (0x4)
  *fill*         0x000000001ffff371        0x3 
@@ -1235,59 +1226,59 @@ END GROUP
                 0x000000000000272c                _image_size = (_image_end - _image_start)
 OUTPUT(output/kl25z_run.axf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0xa456
+.debug_info     0x0000000000000000     0xa450
  .debug_info    0x0000000000000000      0x69d ./startup/startup_mkl25z4.o
  .debug_info    0x000000000000069d      0x84e ./source/fb_implementation/handle_led.o
  .debug_info    0x0000000000000eeb      0x520 ./source/fb_implementation/logger.o
- .debug_info    0x000000000000140b      0x8bb ./source/fb_implementation/memory_tests.o
- .debug_info    0x0000000000001cc6      0x78e ./source/fb_implementation/setup_teardown.o
- .debug_info    0x0000000000002454      0x1b6 ./source/common/gen_pattern.o
- .debug_info    0x000000000000260a      0x61c ./source/main.o
- .debug_info    0x0000000000002c26       0x4f ./source/mtb.o
- .debug_info    0x0000000000002c75       0x38 ./source/semihost_hardfault.o
- .debug_info    0x0000000000002cad     0x20e3 ./drivers/fsl_clock.o
- .debug_info    0x0000000000004d90      0x60e ./drivers/fsl_gpio.o
- .debug_info    0x000000000000539e     0x1be5 ./drivers/fsl_lpsci.o
- .debug_info    0x0000000000006f83     0x1ad4 ./drivers/fsl_uart.o
- .debug_info    0x0000000000008a57      0xc96 ./board/clock_config.o
- .debug_info    0x00000000000096ed       0x38 ./board/peripherals.o
- .debug_info    0x0000000000009725      0x8f2 ./board/pin_mux.o
- .debug_info    0x000000000000a017      0x43f ./CMSIS/system_MKL25Z4.o
+ .debug_info    0x000000000000140b      0x78e ./source/fb_implementation/setup_teardown.o
+ .debug_info    0x0000000000001b99      0x1b6 ./source/common/gen_pattern.o
+ .debug_info    0x0000000000001d4f      0x8b5 ./source/common/memory_tests.o
+ .debug_info    0x0000000000002604      0x61c ./source/main.o
+ .debug_info    0x0000000000002c20       0x4f ./source/mtb.o
+ .debug_info    0x0000000000002c6f       0x38 ./source/semihost_hardfault.o
+ .debug_info    0x0000000000002ca7     0x20e3 ./drivers/fsl_clock.o
+ .debug_info    0x0000000000004d8a      0x60e ./drivers/fsl_gpio.o
+ .debug_info    0x0000000000005398     0x1be5 ./drivers/fsl_lpsci.o
+ .debug_info    0x0000000000006f7d     0x1ad4 ./drivers/fsl_uart.o
+ .debug_info    0x0000000000008a51      0xc96 ./board/clock_config.o
+ .debug_info    0x00000000000096e7       0x38 ./board/peripherals.o
+ .debug_info    0x000000000000971f      0x8f2 ./board/pin_mux.o
+ .debug_info    0x000000000000a011      0x43f ./CMSIS/system_MKL25Z4.o
 
-.debug_abbrev   0x0000000000000000     0x23ec
+.debug_abbrev   0x0000000000000000     0x23fd
  .debug_abbrev  0x0000000000000000      0x155 ./startup/startup_mkl25z4.o
  .debug_abbrev  0x0000000000000155      0x1fe ./source/fb_implementation/handle_led.o
  .debug_abbrev  0x0000000000000353      0x194 ./source/fb_implementation/logger.o
- .debug_abbrev  0x00000000000004e7      0x2b2 ./source/fb_implementation/memory_tests.o
- .debug_abbrev  0x0000000000000799      0x1e0 ./source/fb_implementation/setup_teardown.o
- .debug_abbrev  0x0000000000000979      0x15f ./source/common/gen_pattern.o
- .debug_abbrev  0x0000000000000ad8      0x15e ./source/main.o
- .debug_abbrev  0x0000000000000c36       0x43 ./source/mtb.o
- .debug_abbrev  0x0000000000000c79       0x2e ./source/semihost_hardfault.o
- .debug_abbrev  0x0000000000000ca7      0x4f4 ./drivers/fsl_clock.o
- .debug_abbrev  0x000000000000119b      0x24a ./drivers/fsl_gpio.o
- .debug_abbrev  0x00000000000013e5      0x4bd ./drivers/fsl_lpsci.o
- .debug_abbrev  0x00000000000018a2      0x4bf ./drivers/fsl_uart.o
- .debug_abbrev  0x0000000000001d61      0x296 ./board/clock_config.o
- .debug_abbrev  0x0000000000001ff7       0x2e ./board/peripherals.o
- .debug_abbrev  0x0000000000002025      0x271 ./board/pin_mux.o
- .debug_abbrev  0x0000000000002296      0x156 ./CMSIS/system_MKL25Z4.o
+ .debug_abbrev  0x00000000000004e7      0x1e0 ./source/fb_implementation/setup_teardown.o
+ .debug_abbrev  0x00000000000006c7      0x15f ./source/common/gen_pattern.o
+ .debug_abbrev  0x0000000000000826      0x2c3 ./source/common/memory_tests.o
+ .debug_abbrev  0x0000000000000ae9      0x15e ./source/main.o
+ .debug_abbrev  0x0000000000000c47       0x43 ./source/mtb.o
+ .debug_abbrev  0x0000000000000c8a       0x2e ./source/semihost_hardfault.o
+ .debug_abbrev  0x0000000000000cb8      0x4f4 ./drivers/fsl_clock.o
+ .debug_abbrev  0x00000000000011ac      0x24a ./drivers/fsl_gpio.o
+ .debug_abbrev  0x00000000000013f6      0x4bd ./drivers/fsl_lpsci.o
+ .debug_abbrev  0x00000000000018b3      0x4bf ./drivers/fsl_uart.o
+ .debug_abbrev  0x0000000000001d72      0x296 ./board/clock_config.o
+ .debug_abbrev  0x0000000000002008       0x2e ./board/peripherals.o
+ .debug_abbrev  0x0000000000002036      0x271 ./board/pin_mux.o
+ .debug_abbrev  0x00000000000022a7      0x156 ./CMSIS/system_MKL25Z4.o
 
-.debug_loc      0x0000000000000000     0x4cba
+.debug_loc      0x0000000000000000     0x4c95
  .debug_loc     0x0000000000000000      0x234 ./startup/startup_mkl25z4.o
  .debug_loc     0x0000000000000234      0x1bc ./source/fb_implementation/handle_led.o
  .debug_loc     0x00000000000003f0      0x128 ./source/fb_implementation/logger.o
- .debug_loc     0x0000000000000518      0x6f7 ./source/fb_implementation/memory_tests.o
- .debug_loc     0x0000000000000c0f      0x150 ./source/fb_implementation/setup_teardown.o
- .debug_loc     0x0000000000000d5f       0xdf ./source/common/gen_pattern.o
- .debug_loc     0x0000000000000e3e       0xbe ./source/main.o
- .debug_loc     0x0000000000000efc     0x13ef ./drivers/fsl_clock.o
- .debug_loc     0x00000000000022eb      0x2e9 ./drivers/fsl_gpio.o
- .debug_loc     0x00000000000025d4     0x126a ./drivers/fsl_lpsci.o
- .debug_loc     0x000000000000383e     0x1127 ./drivers/fsl_uart.o
- .debug_loc     0x0000000000004965       0x7b ./board/clock_config.o
- .debug_loc     0x00000000000049e0      0x214 ./board/pin_mux.o
- .debug_loc     0x0000000000004bf4       0xc6 ./CMSIS/system_MKL25Z4.o
+ .debug_loc     0x0000000000000518      0x150 ./source/fb_implementation/setup_teardown.o
+ .debug_loc     0x0000000000000668       0xdf ./source/common/gen_pattern.o
+ .debug_loc     0x0000000000000747      0x6d2 ./source/common/memory_tests.o
+ .debug_loc     0x0000000000000e19       0xbe ./source/main.o
+ .debug_loc     0x0000000000000ed7     0x13ef ./drivers/fsl_clock.o
+ .debug_loc     0x00000000000022c6      0x2e9 ./drivers/fsl_gpio.o
+ .debug_loc     0x00000000000025af     0x126a ./drivers/fsl_lpsci.o
+ .debug_loc     0x0000000000003819     0x1127 ./drivers/fsl_uart.o
+ .debug_loc     0x0000000000004940       0x7b ./board/clock_config.o
+ .debug_loc     0x00000000000049bb      0x214 ./board/pin_mux.o
+ .debug_loc     0x0000000000004bcf       0xc6 ./CMSIS/system_MKL25Z4.o
 
 .debug_aranges  0x0000000000000000      0x6f0
  .debug_aranges
@@ -1297,11 +1288,11 @@ OUTPUT(output/kl25z_run.axf elf32-littlearm)
  .debug_aranges
                 0x0000000000000180       0x48 ./source/fb_implementation/logger.o
  .debug_aranges
-                0x00000000000001c8       0x60 ./source/fb_implementation/memory_tests.o
+                0x00000000000001c8       0x28 ./source/fb_implementation/setup_teardown.o
  .debug_aranges
-                0x0000000000000228       0x28 ./source/fb_implementation/setup_teardown.o
+                0x00000000000001f0       0x30 ./source/common/gen_pattern.o
  .debug_aranges
-                0x0000000000000250       0x30 ./source/common/gen_pattern.o
+                0x0000000000000220       0x60 ./source/common/memory_tests.o
  .debug_aranges
                 0x0000000000000280       0x20 ./source/main.o
  .debug_aranges
@@ -1329,9 +1320,9 @@ OUTPUT(output/kl25z_run.axf elf32-littlearm)
  .debug_ranges  0x0000000000000000      0x150 ./startup/startup_mkl25z4.o
  .debug_ranges  0x0000000000000150       0x10 ./source/fb_implementation/handle_led.o
  .debug_ranges  0x0000000000000160       0x50 ./source/fb_implementation/logger.o
- .debug_ranges  0x00000000000001b0      0x190 ./source/fb_implementation/memory_tests.o
- .debug_ranges  0x0000000000000340       0x48 ./source/fb_implementation/setup_teardown.o
- .debug_ranges  0x0000000000000388       0x38 ./source/common/gen_pattern.o
+ .debug_ranges  0x00000000000001b0       0x48 ./source/fb_implementation/setup_teardown.o
+ .debug_ranges  0x00000000000001f8       0x38 ./source/common/gen_pattern.o
+ .debug_ranges  0x0000000000000230      0x190 ./source/common/memory_tests.o
  .debug_ranges  0x00000000000003c0       0x10 ./source/main.o
  .debug_ranges  0x00000000000003d0       0x10 ./source/semihost_hardfault.o
  .debug_ranges  0x00000000000003e0      0x2a0 ./drivers/fsl_clock.o
@@ -1343,59 +1334,59 @@ OUTPUT(output/kl25z_run.axf elf32-littlearm)
  .debug_ranges  0x0000000000000a60       0x90 ./board/pin_mux.o
  .debug_ranges  0x0000000000000af0       0x18 ./CMSIS/system_MKL25Z4.o
 
-.debug_line     0x0000000000000000     0x5bcc
+.debug_line     0x0000000000000000     0x5bbe
  .debug_line    0x0000000000000000      0x378 ./startup/startup_mkl25z4.o
  .debug_line    0x0000000000000378      0x325 ./source/fb_implementation/handle_led.o
- .debug_line    0x000000000000069d      0x2d3 ./source/fb_implementation/logger.o
- .debug_line    0x0000000000000970      0x560 ./source/fb_implementation/memory_tests.o
- .debug_line    0x0000000000000ed0      0x2e2 ./source/fb_implementation/setup_teardown.o
- .debug_line    0x00000000000011b2      0x210 ./source/common/gen_pattern.o
- .debug_line    0x00000000000013c2      0x2f0 ./source/main.o
- .debug_line    0x00000000000016b2       0x30 ./source/mtb.o
- .debug_line    0x00000000000016e2       0x5b ./source/semihost_hardfault.o
- .debug_line    0x000000000000173d     0x1814 ./drivers/fsl_clock.o
- .debug_line    0x0000000000002f51      0x310 ./drivers/fsl_gpio.o
- .debug_line    0x0000000000003261      0xffb ./drivers/fsl_lpsci.o
- .debug_line    0x000000000000425c      0xf9b ./drivers/fsl_uart.o
- .debug_line    0x00000000000051f7      0x31d ./board/clock_config.o
- .debug_line    0x0000000000005514       0x4b ./board/peripherals.o
- .debug_line    0x000000000000555f      0x35e ./board/pin_mux.o
- .debug_line    0x00000000000058bd      0x30f ./CMSIS/system_MKL25Z4.o
+ .debug_line    0x000000000000069d      0x2d5 ./source/fb_implementation/logger.o
+ .debug_line    0x0000000000000972      0x2e2 ./source/fb_implementation/setup_teardown.o
+ .debug_line    0x0000000000000c54      0x210 ./source/common/gen_pattern.o
+ .debug_line    0x0000000000000e64      0x550 ./source/common/memory_tests.o
+ .debug_line    0x00000000000013b4      0x2f0 ./source/main.o
+ .debug_line    0x00000000000016a4       0x30 ./source/mtb.o
+ .debug_line    0x00000000000016d4       0x5b ./source/semihost_hardfault.o
+ .debug_line    0x000000000000172f     0x1814 ./drivers/fsl_clock.o
+ .debug_line    0x0000000000002f43      0x310 ./drivers/fsl_gpio.o
+ .debug_line    0x0000000000003253      0xffb ./drivers/fsl_lpsci.o
+ .debug_line    0x000000000000424e      0xf9b ./drivers/fsl_uart.o
+ .debug_line    0x00000000000051e9      0x31d ./board/clock_config.o
+ .debug_line    0x0000000000005506       0x4b ./board/peripherals.o
+ .debug_line    0x0000000000005551      0x35e ./board/pin_mux.o
+ .debug_line    0x00000000000058af      0x30f ./CMSIS/system_MKL25Z4.o
 
-.debug_str      0x0000000000000000     0x3b8a
+.debug_str      0x0000000000000000     0x3b7f
  .debug_str     0x0000000000000000      0x4e8 ./startup/startup_mkl25z4.o
                                         0x4fb (size before relaxing)
  .debug_str     0x00000000000004e8      0x56e ./source/fb_implementation/handle_led.o
                                         0x704 (size before relaxing)
  .debug_str     0x0000000000000a56      0x520 ./source/fb_implementation/logger.o
                                         0x7fa (size before relaxing)
- .debug_str     0x0000000000000f76      0x1a4 ./source/fb_implementation/memory_tests.o
-                                        0x3e4 (size before relaxing)
- .debug_str     0x000000000000111a       0x9f ./source/fb_implementation/setup_teardown.o
+ .debug_str     0x0000000000000f76       0x9f ./source/fb_implementation/setup_teardown.o
                                         0x71e (size before relaxing)
- .debug_str     0x00000000000011b9       0x2e ./source/common/gen_pattern.o
+ .debug_str     0x0000000000001015       0x46 ./source/common/gen_pattern.o
                                         0x253 (size before relaxing)
- .debug_str     0x00000000000011e7       0x3e ./source/main.o
+ .debug_str     0x000000000000105b      0x181 ./source/common/memory_tests.o
+                                        0x3d9 (size before relaxing)
+ .debug_str     0x00000000000011dc       0x3e ./source/main.o
                                         0x322 (size before relaxing)
- .debug_str     0x0000000000001225       0x1f ./source/mtb.o
+ .debug_str     0x000000000000121a       0x1f ./source/mtb.o
                                         0x173 (size before relaxing)
- .debug_str     0x0000000000001244       0x1f ./source/semihost_hardfault.o
+ .debug_str     0x0000000000001239       0x1f ./source/semihost_hardfault.o
                                         0x173 (size before relaxing)
- .debug_str     0x0000000000001263      0xe84 ./drivers/fsl_clock.o
+ .debug_str     0x0000000000001258      0xe84 ./drivers/fsl_clock.o
                                        0x1814 (size before relaxing)
- .debug_str     0x00000000000020e7      0x13d ./drivers/fsl_gpio.o
+ .debug_str     0x00000000000020dc      0x13d ./drivers/fsl_gpio.o
                                         0x83b (size before relaxing)
- .debug_str     0x0000000000002224      0xc90 ./drivers/fsl_lpsci.o
+ .debug_str     0x0000000000002219      0xc90 ./drivers/fsl_lpsci.o
                                        0x15e3 (size before relaxing)
- .debug_str     0x0000000000002eb4      0x8e6 ./drivers/fsl_uart.o
+ .debug_str     0x0000000000002ea9      0x8e6 ./drivers/fsl_uart.o
                                        0x15ef (size before relaxing)
- .debug_str     0x000000000000379a      0x237 ./board/clock_config.o
+ .debug_str     0x000000000000378f      0x237 ./board/clock_config.o
                                         0xe79 (size before relaxing)
- .debug_str     0x00000000000039d1       0x17 ./board/peripherals.o
+ .debug_str     0x00000000000039c6       0x17 ./board/peripherals.o
                                         0x173 (size before relaxing)
- .debug_str     0x00000000000039e8      0x15e ./board/pin_mux.o
+ .debug_str     0x00000000000039dd      0x15e ./board/pin_mux.o
                                         0x6f0 (size before relaxing)
- .debug_str     0x0000000000003b46       0x44 ./CMSIS/system_MKL25Z4.o
+ .debug_str     0x0000000000003b3b       0x44 ./CMSIS/system_MKL25Z4.o
                                         0x355 (size before relaxing)
 
 .comment        0x0000000000000000       0x75
@@ -1403,9 +1394,9 @@ OUTPUT(output/kl25z_run.axf elf32-littlearm)
                                          0x76 (size before relaxing)
  .comment       0x0000000000000075       0x76 ./source/fb_implementation/handle_led.o
  .comment       0x0000000000000075       0x76 ./source/fb_implementation/logger.o
- .comment       0x0000000000000075       0x76 ./source/fb_implementation/memory_tests.o
  .comment       0x0000000000000075       0x76 ./source/fb_implementation/setup_teardown.o
  .comment       0x0000000000000075       0x76 ./source/common/gen_pattern.o
+ .comment       0x0000000000000075       0x76 ./source/common/memory_tests.o
  .comment       0x0000000000000075       0x76 ./source/main.o
  .comment       0x0000000000000075       0x76 ./source/mtb.o
  .comment       0x0000000000000075       0x76 ./source/semihost_hardfault.o
@@ -1450,11 +1441,11 @@ OUTPUT(output/kl25z_run.axf elf32-littlearm)
  .ARM.attributes
                 0x0000000000000058       0x2c ./source/fb_implementation/logger.o
  .ARM.attributes
-                0x0000000000000084       0x2c ./source/fb_implementation/memory_tests.o
+                0x0000000000000084       0x2c ./source/fb_implementation/setup_teardown.o
  .ARM.attributes
-                0x00000000000000b0       0x2c ./source/fb_implementation/setup_teardown.o
+                0x00000000000000b0       0x2c ./source/common/gen_pattern.o
  .ARM.attributes
-                0x00000000000000dc       0x2c ./source/common/gen_pattern.o
+                0x00000000000000dc       0x2c ./source/common/memory_tests.o
  .ARM.attributes
                 0x0000000000000108       0x2c ./source/main.o
  .ARM.attributes
@@ -1548,9 +1539,9 @@ OUTPUT(output/kl25z_run.axf elf32-littlearm)
  .debug_frame   0x0000000000000000      0x3bc ./startup/startup_mkl25z4.o
  .debug_frame   0x00000000000003bc       0x20 ./source/fb_implementation/handle_led.o
  .debug_frame   0x00000000000003dc       0x90 ./source/fb_implementation/logger.o
- .debug_frame   0x000000000000046c      0x108 ./source/fb_implementation/memory_tests.o
- .debug_frame   0x0000000000000574       0x3c ./source/fb_implementation/setup_teardown.o
- .debug_frame   0x00000000000005b0       0x4c ./source/common/gen_pattern.o
+ .debug_frame   0x000000000000046c       0x3c ./source/fb_implementation/setup_teardown.o
+ .debug_frame   0x00000000000004a8       0x4c ./source/common/gen_pattern.o
+ .debug_frame   0x00000000000004f4      0x108 ./source/common/memory_tests.o
  .debug_frame   0x00000000000005fc       0x30 ./source/main.o
  .debug_frame   0x000000000000062c       0x20 ./source/semihost_hardfault.o
  .debug_frame   0x000000000000064c      0x458 ./drivers/fsl_clock.o
@@ -1936,13 +1927,13 @@ _vfprintf                                         /Applications/MCUXpressoIDE_11
 _vprintf                                          /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
 _vsnprintf                                        /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
 _vsprintf                                         /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
-addressIsOwned                                    ./source/fb_implementation/memory_tests.o
-allocate_words                                    ./source/fb_implementation/memory_tests.o
+addressIsOwned                                    ./source/common/memory_tests.o
+allocate_words                                    ./source/common/memory_tests.o
                                                   ./source/main.o
 bss_init                                          ./startup/startup_mkl25z4.o
 calloc                                            /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(alloc.o)
 data_init                                         ./startup/startup_mkl25z4.o
-display_memory                                    ./source/fb_implementation/memory_tests.o
+display_memory                                    ./source/common/memory_tests.o
                                                   ./source/main.o
 errno                                             /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(errno.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(ftell.o)
@@ -1956,8 +1947,8 @@ flash_cache_clear                                 ./drivers/fsl_flash.o
 free                                              /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(alloc.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(fclose.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
-                                                  ./source/fb_implementation/memory_tests.o
-free_words                                        ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
+free_words                                        ./source/common/memory_tests.o
                                                   ./source/main.o
 fseek                                             /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(fseek.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(_do_fflush.o)
@@ -1970,30 +1961,30 @@ g_xtal0Freq                                       ./drivers/fsl_clock.o
                                                   ./board/clock_config.o
 g_xtal32Freq                                      ./drivers/fsl_clock.o
 gen_pattern                                       ./source/common/gen_pattern.o
-                                                  ./source/fb_implementation/memory_tests.o
-get_address                                       ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
+get_address                                       ./source/common/memory_tests.o
 initialize                                        ./source/fb_implementation/setup_teardown.o
                                                   ./source/main.o
-invert_block                                      ./source/fb_implementation/memory_tests.o
+invert_block                                      ./source/common/memory_tests.o
                                                   ./source/main.o
 kFCCOBx                                           ./drivers/fsl_flash.o
 kFPROTL                                           ./drivers/fsl_flash.o
 kPFlashDensities                                  ./drivers/fsl_flash.o
 log_data                                          ./source/fb_implementation/logger.o
-                                                  ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
 log_disable                                       ./source/fb_implementation/logger.o
 log_enable                                        ./source/fb_implementation/logger.o
 log_enabled                                       ./source/fb_implementation/logger.o
 log_integer                                       ./source/fb_implementation/logger.o
-                                                  ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
 log_string                                        ./source/fb_implementation/logger.o
                                                   ./source/main.o
-                                                  ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
 main                                              ./source/main.o
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_semihost_nf.a(_cr__main.o)
 malloc                                            /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(alloc.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
-                                                  ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
 mcgConfig_BOARD_BootClockRUN                      ./board/clock_config.o
 mcgConfig_BOARD_BootClockVLPR                     ./board/clock_config.o
 mcm_flash_cache_clear                             ./drivers/fsl_flash.o
@@ -2002,7 +1993,7 @@ memcpy                                            /Applications/MCUXpressoIDE_11
                                                   ./board/pin_mux.o
                                                   ./drivers/fsl_smc.o
                                                   ./drivers/fsl_flash.o
-                                                  ./source/fb_implementation/memory_tests.o
+                                                  ./source/common/memory_tests.o
 memset                                            /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(memset.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(fclose.o)
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
@@ -2027,9 +2018,9 @@ strlen                                            /Applications/MCUXpressoIDE_11
                                                   /Applications/MCUXpressoIDE_11.0.1_2563/ide/plugins/com.nxp.mcuxpresso.tools.macosx_11.0.1.201907311258/tools/bin/../lib/gcc/arm-none-eabi/8.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libcr_c.a(printf.o)
 terminate                                         ./source/fb_implementation/setup_teardown.o
                                                   ./source/main.o
-verify_pattern                                    ./source/fb_implementation/memory_tests.o
+verify_pattern                                    ./source/common/memory_tests.o
                                                   ./source/main.o
-write_memory                                      ./source/fb_implementation/memory_tests.o
+write_memory                                      ./source/common/memory_tests.o
                                                   ./source/main.o
-write_pattern                                     ./source/fb_implementation/memory_tests.o
+write_pattern                                     ./source/common/memory_tests.o
                                                   ./source/main.o
