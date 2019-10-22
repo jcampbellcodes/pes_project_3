@@ -6,19 +6,16 @@
 C_SRCS += \
 ../source/fb_implementation/handle_led.c \
 ../source/fb_implementation/logger.c \
-../source/fb_implementation/memory_tests.c \
 ../source/fb_implementation/setup_teardown.c 
 
 OBJS += \
 ./source/fb_implementation/handle_led.o \
 ./source/fb_implementation/logger.o \
-./source/fb_implementation/memory_tests.o \
 ./source/fb_implementation/setup_teardown.o 
 
 C_DEPS += \
 ./source/fb_implementation/handle_led.d \
 ./source/fb_implementation/logger.d \
-./source/fb_implementation/memory_tests.d \
 ./source/fb_implementation/setup_teardown.d 
 
 

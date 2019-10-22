@@ -8,6 +8,10 @@
  *         ARM Compiler: GNU gcc version 8.2.1 20181213
  *         ARM Linker: GNU ld 2.31.51.20181213
  *         ARM Debugger: GNU gdb 8.2.50.20181213-git
+ *
+ *          Leveraged code in this file includes the ABS macro, taken from
+ *          Slide 30 of "More C Topics" lecture from ECEN 5813
+ *          Link: https://canvas.colorado.edu/courses/53078/files/folder/Class%20FIles?preview=7085601
  */
 #ifndef PES_PROJECT_3_MEM_TESTS_H
 #define PES_PROJECT_3_MEM_TESTS_H
@@ -25,7 +29,9 @@
 
 #include "logger.h"
 
-
+/**
+ * Length of the static arrays used for static memory alloc.
+ */
 #define ARRLEN 256
 
 /**
@@ -37,7 +43,10 @@
  */
 #define ABS(x) ((x)>0?(x):-(x))
 
-// linked list
+/**
+ * Memory is tracked in this module using a linked
+ * list of memory nodes.
+ */
 struct mem_list_node
 {
 	uint32_t* data;
@@ -45,9 +54,16 @@ struct mem_list_node
 	struct mem_list_node* next;
 };
 
-// sentinel struct, always has null data
+/*
+ * The head of the list is a statically allocated sentinel
+ * used to simplify the linked list logic.
+ */
 static struct mem_list_node memListHead = { NULL, 0, NULL };
 
+/**
+ * Helper function to check whether an address resides within
+ * memory that is currently allocated.
+ */
 bool addressIsOwned(uint32_t* inAddress)
 {
 	if(inAddress)
@@ -90,10 +106,10 @@ uint32_t * allocate_words(size_t length)
 
 		iter->next = (struct mem_list_node*)malloc(sizeof(struct mem_list_node));
 		iter->next->data = (uint32_t*)malloc(length);
-	    for(int i = 0; i < length; i++)
-	    {
-	    	((uint8_t*)iter->next->data)[i] = 0x0;
-	    }
+		for(int i = 0; i < length; i++)
+		{
+			((uint8_t*)iter->next->data)[i] = 0x0;
+		}
 
 		iter->next->size = length;
 		iter->next->next = NULL;
@@ -192,6 +208,8 @@ mem_status invert_block(uint32_t * loc, size_t length)
 	if(addressIsOwned(loc))
 	{
 		uint8_t* locBytes = (uint8_t*)loc;
+
+		log_string("\n Data Before invert: \n");
 		log_data(locBytes, length);
 
 		for(int i = 0; i < length; i++)
@@ -200,6 +218,9 @@ mem_status invert_block(uint32_t * loc, size_t length)
 			inverted_byte ^= (uint8_t)0xFF;
 			locBytes[i] = inverted_byte;
 		}
+
+		log_string("\n Data After invert: \n");
+		log_data(locBytes, length);
 		return SUCCESS;
 	}
 	return FAILED;
@@ -283,7 +304,7 @@ uint32_t * get_address(uint32_t * base, uint32_t offset)
 {
 	if(base)
 	{
-		return &base[offset];
+		return (uint32_t*)(((uint8_t*)base)+offset);
 	}
 	return NULL;
 }

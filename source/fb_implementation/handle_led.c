@@ -2,6 +2,8 @@
  * @file handle_led.c
  * @brief Project 3
  *
+ * Functions for handling the state of an LED.
+ *
  * @tools  PC Compiler: GNU gcc 8.3.0
  *         PC Linker: GNU ld 2.32
  *         PC Debugger: GNU gdb 8.2.91.20190405-git

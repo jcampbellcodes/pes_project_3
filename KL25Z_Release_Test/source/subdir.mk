@@ -5,17 +5,14 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../source/mtb.c \
-../source/pes_project_3_with_sdk.c \
 ../source/semihost_hardfault.c 
 
 OBJS += \
 ./source/mtb.o \
-./source/pes_project_3_with_sdk.o \
 ./source/semihost_hardfault.o 
 
 C_DEPS += \
 ./source/mtb.d \
-./source/pes_project_3_with_sdk.d \
 ./source/semihost_hardfault.d 
 
 

@@ -6,19 +6,16 @@
 C_SRCS += \
 ../source/main.c \
 ../source/mtb.c \
-../source/pes_project_3_with_sdk.c \
 ../source/semihost_hardfault.c 
 
 OBJS += \
 ./source/main.o \
 ./source/mtb.o \
-./source/pes_project_3_with_sdk.o \
 ./source/semihost_hardfault.o 
 
 C_DEPS += \
 ./source/main.d \
 ./source/mtb.d \
-./source/pes_project_3_with_sdk.d \
 ./source/semihost_hardfault.d 
 
 

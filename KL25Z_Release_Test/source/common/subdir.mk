@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../source/common/gen_pattern.c 
+../source/common/gen_pattern.c \
+../source/common/memory_tests.c 
 
 OBJS += \
-./source/common/gen_pattern.o 
+./source/common/gen_pattern.o \
+./source/common/memory_tests.o
 
 C_DEPS += \
-./source/common/gen_pattern.d 
+./source/common/gen_pattern.d \
+./source/common/memory_tests.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
